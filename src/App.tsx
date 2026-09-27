@@ -86,16 +86,16 @@ function TaskRow({
 
   return (
     <article className={`task-card ${task.completed ? 'completed' : ''}`} data-testid={`card-task-${task.id}`}>
-      <button
-        className="task-check"
-        type="button"
-        aria-label={task.completed ? `Mark "${task.text}" active` : `Complete "${task.text}"`}
-        aria-pressed={task.completed}
-        data-testid={`button-toggle-task-${task.id}`}
-        onClick={() => onToggle(task.id)}
-      >
-        {task.completed && <Check size={14} strokeWidth={3} />}
-      </button>
+   <button
+  className={`task-complete-button ${task.completed ? 'completed' : ''}`}
+  type="button"
+  aria-label={task.completed ? `Task completed: ${task.text}` : `Mark ${task.text} as completed`}
+  aria-pressed={task.completed}
+  data-testid={`button-toggle-task-${task.id}`}
+  onClick={() => onToggle(task.id)}
+>
+  {task.completed ? 'Task completed' : 'Mark task as completed'}
+</button>
       <div className="task-main">
         <p className="task-title" data-testid={`text-task-${task.id}`}>{task.text}</p>
         {(task.dueAt || status) && (
